@@ -28,7 +28,7 @@ export default class Calculator extends Component {
     }
 
     setOperation(operation) {
-        if (this.state.current == 0) {
+        if (this.state.current === 0) {
             return this.setState({ operation, current: 1, clearDisplay: true });
         }
 
