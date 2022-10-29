@@ -3,6 +3,7 @@ import './Calculator.css';
 
 import Button from '../components/Button';
 import Display from '../components/Display';
+import OperationFactory from '../calculator/services/OperationFactory';
 
 const initialState = {
     displayValue: '0',
@@ -35,9 +36,8 @@ export default class Calculator extends Component {
         const finish = operation === '=';
         const currentOperation = this.state.operation;
         const values = [...this.state.values];
-        // TODO: remove eval and use switch case
         try {
-            values[0] = eval(`${values[0]} ${currentOperation} ${values[1]}`);
+            values[0] = (new OperationFactory()).executeOperation(values[0], values[1], currentOperation);
         } catch (error) {
             values[0] = this.state.values[0]
         }
