@@ -1,0 +1,16 @@
+@import "./../variables"; // Import @variables
+
+.calculator {
+    .calculator-buttons {
+        height: 320px;
+        width: 420px;
+        overflow: hidden;
+        display: grid;
+        grid-template-columns: repeat(4, 20%);
+        grid-template-rows: 1fr 48px 48px 48px 48px 48px;
+        background-color: $light-darker;
+        justify-content: center;
+        border-radius: 20px;
+        padding: 10px;
+    }
+}
