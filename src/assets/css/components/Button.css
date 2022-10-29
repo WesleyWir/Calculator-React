@@ -1,0 +1,31 @@
+.button {
+  font-size: 1.4em;
+  background-color: #f7f7f7;
+  border: none;
+  outline: none;
+  margin: 5px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.button:hover {
+  background-color: #c4c4c4;
+}
+
+.button.double {
+  grid-column: span 2;
+}
+
+.button.triple {
+  grid-column: span 3;
+  color: red;
+}
+
+.button.operation {
+  color: green;
+}
+
+.button.operation:active {
+  background-color: #ababab;
+}

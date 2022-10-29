@@ -1,5 +1,5 @@
 import React from 'react';
-import './Button.css';
+import './../assets/css/components/Button.css';
 
 export default props =>
     <button
