@@ -72,7 +72,7 @@ export default class Calculator extends Component {
     render() {
         return (
             <div className="calculator">
-                <Display value={this.state.displayValue} />
+                <Display firstValue={this.state.values[0]} secondValue={this.state.values[1]} value={this.state.displayValue} currentOperation={this.state.operation}/>
                 <div className="calculator-buttons">
                     <Button label="AC" click={this.clearMemory} triple />
                     <Button label="/" click={this.setOperation} operation />
