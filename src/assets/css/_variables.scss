@@ -1,11 +1,11 @@
 // Light
+$light-font-color: #000;
 $light-background: #ffffff;
 $light-darker: #f9f9f9;
 $light-button: #f7f7f7;
 
-@media (prefers-color-scheme: dark) {
-    // Dark
-    $dark-background: #22252d;
-    $dark-light: #2a2d37;
-    $dark-button: #282b33;
-}
+// Dark
+$dark-background: #22252d;
+$dark-font-color: #fff;
+$dark-light: #2a2d37;
+$dark-button: #282b33;

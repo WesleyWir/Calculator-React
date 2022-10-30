@@ -3,7 +3,6 @@
 }
 
 .display-mode button {
-  background: #f9f9f9;
   border: none;
   font: inherit;
   cursor: pointer;
@@ -15,22 +14,42 @@
   margin: 20px;
 }
 
-.display-mode button:hover {
-  background-color: #ececec;
-}
-
-.display-mode button .active {
-  background-color: green;
-}
-
-.display-mode button:not(.active) .icon {
-  color: #4d4d4d;
-}
-
 .display-mode .light-theme-button {
   border-radius: 10px 0px 0px 10px;
 }
 
 .display-mode .dark-theme-button {
   border-radius: 0px 10px 10px 0px;
+}
+
+.light .display-mode button {
+  background: #f9f9f9;
+}
+
+.light .display-mode button:hover {
+  background-color: #ececec;
+}
+
+.light .display-mode button .icon {
+  color: #000;
+}
+
+.light .display-mode button:not(.active) .icon {
+  color: #4d4d4d;
+}
+
+.dark .display-mode button {
+  background: #2a2d37;
+}
+
+.dark .display-mode button:hover {
+  background-color: #1f2129;
+}
+
+.dark .display-mode button .icon {
+  color: #fff;
+}
+
+.dark .display-mode button:not(.active) .icon {
+  color: #b3b3b3;
 }
