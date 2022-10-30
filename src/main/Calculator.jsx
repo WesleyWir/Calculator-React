@@ -18,6 +18,10 @@ export default class Calculator extends Component {
 
     state = { ...initialState };
 
+    componentDidMount() {
+        document.title = "Calculator"; 
+     }
+
     constructor(props) {
         super(props);
         this.clearMemory = this.clearMemory.bind(this);
@@ -72,7 +76,7 @@ export default class Calculator extends Component {
     render() {
         return (
             <div className="calculator">
-                <Display firstValue={this.state.values[0]} secondValue={this.state.values[1]} value={this.state.displayValue} currentOperation={this.state.operation}/>
+                <Display firstValue={this.state.values[0]} secondValue={this.state.values[1]} value={this.state.displayValue} currentOperation={this.state.operation} />
                 <div className="calculator-buttons">
                     <Button label="AC" click={this.clearMemory} triple />
                     <Button label="/" click={this.setOperation} operation />
