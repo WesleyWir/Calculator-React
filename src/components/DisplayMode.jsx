@@ -38,7 +38,7 @@ export default class DisplayMode extends Component {
     }
 
     getThemeOption = () => {
-        if(!(sessionStorage.getItem("theme-option"))){
+        if (!(sessionStorage.getItem("theme-option"))) {
             return 'light';
         }
 
@@ -48,8 +48,8 @@ export default class DisplayMode extends Component {
     render() {
         return (
             <div className="display-mode">
-                <button className="light-theme-button" ref={this.lightThemeButton} onClick={this.activeLightTheme}><span className="icon"><FontAwesomeIcon icon={faSun} /></span></button>
-                <button className="dark-theme-button" ref={this.darkThemeButton} onClick={this.activeDarkTheme}><span className="icon"><FontAwesomeIcon icon={faMoon} /></span></button>
+                <button className={`light-theme-button ${this.getThemeOption() == 'light' ? 'active' : ''}`} ref={this.lightThemeButton} onClick={this.activeLightTheme}><span className="icon"><FontAwesomeIcon icon={faSun} /></span></button>
+                <button className={`dark-theme-button ${this.getThemeOption() == 'dark' ? 'active' : ''}`} ref={this.darkThemeButton} onClick={this.activeDarkTheme}><span className="icon"><FontAwesomeIcon icon={faMoon} /></span></button>
             </div>
         )
     }
