@@ -23,7 +23,7 @@ The following tools were used in building the project:
 
 - [Node.js](https://nodejs.org/en/)
 - [React](https://pt-br.reactjs.org/)
-- 
+
 ### Prerequisites
 
 Before starting, you will need to have the following tools installed on your machine::
