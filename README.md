@@ -6,6 +6,7 @@
 - [x] Demonstrate previous value above the result
 - [x] Choice of dark and light themes, and save in sessionStorage
 - [ ] Operations history
+- [ ] Keyboard integration
 
 ### Demo
 
