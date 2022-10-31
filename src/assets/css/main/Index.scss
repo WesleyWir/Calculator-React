@@ -1,0 +1,28 @@
+@import "./../variables"; // Import @variables
+
+@font-face {
+    font-family: "Roboto";
+    src: url("./../../fonts/Roboto-Regular.ttf");
+}
+
+* {
+    font-family: "Roboto", monospace;
+}
+
+body {
+    display: flex;
+    height: 90vh;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.light {
+    background-color: $light-background;
+    color: $light-font-color;
+}
+
+.dark {
+    background-color: $dark-background;
+    color: $dark-font-color;
+}

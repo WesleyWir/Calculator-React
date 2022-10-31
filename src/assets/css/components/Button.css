@@ -1,6 +1,5 @@
 .button {
   font-size: 1.4em;
-  background-color: #f7f7f7;
   border: none;
   outline: none;
   margin: 5px;
@@ -9,8 +8,30 @@
   font-weight: bold;
 }
 
-.button:hover {
+.light .button {
+  color: #000;
+  background-color: #f7f7f7;
+}
+
+.light .button:hover {
   background-color: #c4c4c4;
+}
+
+.light .button.operation:active {
+  background-color: #ababab;
+}
+
+.dark .button {
+  color: #fff;
+  background-color: #282b33;
+}
+
+.dark .button:hover {
+  background-color: #555b6c;
+}
+
+.dark .button.operation:active {
+  background-color: #6b7389;
 }
 
 .button.double {
@@ -24,8 +45,4 @@
 
 .button.operation {
   color: green;
-}
-
-.button.operation:active {
-  background-color: #ababab;
 }

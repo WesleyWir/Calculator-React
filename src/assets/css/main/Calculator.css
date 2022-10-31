@@ -5,8 +5,15 @@
   display: grid;
   grid-template-columns: repeat(4, 20%);
   grid-template-rows: 1fr 48px 48px 48px 48px 48px;
-  background-color: #f9f9f9;
   justify-content: center;
   border-radius: 20px;
   padding: 10px;
+}
+
+.light .calculator .calculator-buttons {
+  background-color: #f9f9f9;
+}
+
+.dark .calculator .calculator-buttons {
+  background-color: #2a2d37;
 }

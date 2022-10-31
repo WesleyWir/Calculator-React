@@ -2,19 +2,43 @@
 
 .button {
     font-size: 1.4em;
-    background-color: $light-button;
     border: none;
     outline: none;
     margin: 5px;
     border-radius: 10px;
     cursor: pointer;
     font-weight: bold;
+}
 
-    &:hover {
-        background-color: darken($light-button, 20%);
+.light {
+    .button {
+        color: $light-font-color;
+        background-color: $light-button;
+
+        &:hover {
+            background-color: darken($light-button, 20%);
+        }
+    }
+
+    .button.operation:active {
+        background-color: darken($light-button, 30%);
     }
 }
 
+.dark {
+    .button {
+        color: $dark-font-color;
+        background-color: $dark-button;
+
+        &:hover {
+            background-color: lighten($dark-button, 20%);
+        }
+    }
+
+    .button.operation:active {
+        background-color: lighten($dark-button, 30%);
+    }
+}
 
 .button.double {
     grid-column: span 2;
@@ -27,8 +51,4 @@
 
 .button.operation {
     color: green;
-}
-
-.button.operation:active {
-    background-color: darken($light-button, 30%);
 }
