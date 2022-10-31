@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons'
-import './../assets/css/components/DisplayMode.css';
+import './../assets/scss/components/DisplayMode.scss';
 
 export default class DisplayMode extends Component {
     constructor(props) {
@@ -48,8 +48,8 @@ export default class DisplayMode extends Component {
     render() {
         return (
             <div className="display-mode">
-                <button className={`light-theme-button ${this.getThemeOption() == 'light' ? 'active' : ''}`} ref={this.lightThemeButton} onClick={this.activeLightTheme}><span className="icon"><FontAwesomeIcon icon={faSun} /></span></button>
-                <button className={`dark-theme-button ${this.getThemeOption() == 'dark' ? 'active' : ''}`} ref={this.darkThemeButton} onClick={this.activeDarkTheme}><span className="icon"><FontAwesomeIcon icon={faMoon} /></span></button>
+                <button className={`light-theme-button ${this.getThemeOption() === 'light' ? 'active' : ''}`} ref={this.lightThemeButton} onClick={this.activeLightTheme}><span className="icon"><FontAwesomeIcon icon={faSun} /></span></button>
+                <button className={`dark-theme-button ${this.getThemeOption() === 'dark' ? 'active' : ''}`} ref={this.darkThemeButton} onClick={this.activeDarkTheme}><span className="icon"><FontAwesomeIcon icon={faMoon} /></span></button>
             </div>
         )
     }

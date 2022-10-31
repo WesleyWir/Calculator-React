@@ -1,5 +1,5 @@
 import React from 'react';
-import './../assets/css/components/Display.css';
+import './../assets/scss/components/Display.scss';
 
 
 export default props =>

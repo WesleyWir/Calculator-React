@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './../assets/css/main/Calculator.css';
+import './../assets/scss/views/Calculator.scss';
 
 
 import Button from '../components/Button';
