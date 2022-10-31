@@ -4,7 +4,7 @@ import './../assets/css/main/Calculator.css';
 
 import Button from '../components/Button';
 import Display from '../components/Display';
-import OperationFactory from '../calculator/services/OperationFactory';
+import OperationFactory from '../services/OperationFactory';
 
 const initialState = {
     displayValue: '0',
