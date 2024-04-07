@@ -42,4 +42,10 @@ $ make up
 # Install the project. Example:
 $ make node npm install
 
+# Enter in docker container:
+$ make node bash
+
+# Running server:
+$ npm run start
+
 # The server will start on port:3000 - go to <http://localhost:3000>

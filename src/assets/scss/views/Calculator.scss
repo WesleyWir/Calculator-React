@@ -1,31 +1,98 @@
 @import "./../variables"; // Import @variables
 
-.calculator {
-    .calculator-buttons {
-        height: 320px;
-        width: 420px;
-        overflow: hidden;
-        display: grid;
-        grid-template-columns: repeat(4, 20%);
-        grid-template-rows: 1fr 48px 48px 48px 48px 48px;
+.green-text {
+    color: green;
+}
+
+#main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .calculator {
+        .calculator-buttons {
+            height: 320px;
+            width: 420px;
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: repeat(4, 20%);
+            grid-template-rows: 1fr 48px 48px 48px 48px 48px;
+            justify-content: center;
+            border-radius: 20px;
+            padding: 10px;
+        }
+    }
+    .history {
+        display: flex;
         justify-content: center;
-        border-radius: 20px;
-        padding: 10px;
+        flex-direction: column;
+        .history-values {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            justify-items: center;
+            gap: 10px;
+            .item {
+                position: relative;
+                border-radius: 10px;
+                height: 45px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border: none;
+                background: none;
+                font-size: medium;
+                padding: 10px;
+            }
+        }
+        .clear-history {
+            margin-top: 10px;
+            .clear-history-button {
+                color: rgb(138, 36, 36);
+                font-size: medium;
+                height: 50px;
+            }
+        }
     }
 }
 
 .light {
-    .calculator {
-        .calculator-buttons {
-            background-color: $light-darker;
+    #main {
+        .calculator {
+            .calculator-buttons {
+                background-color: $light-darker;
+            }
+        }
+        .history {
+            .history-values {
+                .item {
+                    background-color: $light-darker;
+                    color: $light-font-color;
+
+                    &:hover {
+                        background-color: darken($light-darker, 10);
+                    }
+                }
+            }
         }
     }
 }
 
 .dark {
-    .calculator {
-        .calculator-buttons {
-            background-color: $dark-light;
+    #main {
+        .calculator {
+            .calculator-buttons {
+                background-color: $dark-light;
+            }
+        }
+        .history {
+            .history-values {
+                .item {
+                    background-color: $dark-light;
+                    color: $dark-font-color;
+                    &:hover {
+                        background-color: lighten($dark-light, 10);
+                    }
+                }
+            }
         }
     }
 }

@@ -22,4 +22,4 @@ down:
 
 .PHONY: node
 node:
-	docker-compose exec node $(COMMANDS_ARGS)
+	docker compose exec node $(COMMANDS_ARGS)
