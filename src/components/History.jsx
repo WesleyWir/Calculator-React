@@ -10,11 +10,14 @@ export default (props) => {
     if (props.operationsHistory) {
         for (const [index, operation] of props.operationsHistory.entries()) {
             historyItems.push(
-                <button className="button item" key={index}>
-                    <span><strong>{operation}<br /><span className='green-text'>{props.resultsHistory[index]}</span></strong></span>
+                <button className="button item" key={index}
+                    onClick={() => props.pushFromHistory(operation)}
+                >
+                    <span><strong>{operation}<br /><span className='green-text'>={props.resultsHistory[index]}</span></strong></span>
                 </button>
             )
         }
+        historyItems = historyItems.reverse();
     }
     return (
         <div className="history">

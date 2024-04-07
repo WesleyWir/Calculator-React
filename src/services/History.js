@@ -6,9 +6,8 @@ export default class HistoryService {
 
     async storeOperationInLocalStorage(firstValue, operation, secondValue, result) {
         const operationString = `${firstValue}${operation}${secondValue}`;
-        const resultString = `=${result}`;
         await this.store(this.operationsKey, operationString);
-        await this.store(this.resultsKey, resultString);
+        await this.store(this.resultsKey, result);
     }
 
     async store(key, payload) {

@@ -43,6 +43,16 @@ export default class Calculator extends Component {
         this.refreshHistoryToState();
     }
 
+    async pushFromHistory(operation) {
+        const valuesArray = operation.split(/[^\d]+/).filter(Boolean);
+        const symbolArray = operation.split(/\d+/).filter(Boolean);
+        operation = symbolArray[0] ?? null;
+        const values = valuesArray.map(Number);
+        const displayValue = null;
+        this.setState({ displayValue, operation, values });
+        this.setOperation(operation);
+    }
+
     refreshHistoryToState() {
         this.setState({
             operationsHistory: historyService.getOperationsHistory(),
@@ -73,7 +83,6 @@ export default class Calculator extends Component {
                 values,
             });
             this.refreshHistoryToState();
-            console.log(this.state.resultsHistory)
         } catch (error) {
             console.error(error);
         }
@@ -131,7 +140,12 @@ export default class Calculator extends Component {
                         <Button label="=" click={this.setOperation} operation />
                     </div>
                 </div>
-                <History operationsHistory={this.state.operationsHistory} resultsHistory={this.state.resultsHistory} clearHistory={() => this.clearHistory()} />
+                <History
+                    operationsHistory={this.state.operationsHistory}
+                    resultsHistory={this.state.resultsHistory}
+                    clearHistory={() => this.clearHistory()}
+                    pushFromHistory={(operation) => this.pushFromHistory(operation)}
+                />
             </main>
         )
     }
