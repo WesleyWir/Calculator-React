@@ -74,7 +74,7 @@ export default class Calculator extends Component {
             const currentOperation = this.state.operation;
             const values = [...this.state.values];
             const firstValue = values[0];
-            const secondValue = values[0];
+            const secondValue = values[1];
             values[0] = (new OperationFactory()).executeOperation(values[0], values[1], currentOperation);
             const result = values[0];
             values[1] = 0;
