@@ -1,7 +1,7 @@
 import React from 'react';
-import './../assets/scss/components/Button.scss';
+import './../assets/scss/components/History.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTrashAlt } from '@fortawesome/free-solid-svg-icons'
+import { faTrashAlt, faHistory } from '@fortawesome/free-solid-svg-icons'
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default (props) => {
@@ -20,9 +20,9 @@ export default (props) => {
         historyItems = historyItems.reverse();
     }
     return (
-        <div className="history">
+        <div id="history">
             <div className="history-title">
-                <h2>Histórico</h2>
+                <h3><FontAwesomeIcon icon={faHistory} /> Histórico</h3>
             </div>
             <div className="history-values">{historyItems}</div>
             <div className="clear-history">

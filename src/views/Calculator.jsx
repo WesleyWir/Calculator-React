@@ -8,10 +8,11 @@ import History from '../components/History';
 import DisplayMode from '../components/DisplayMode';
 import OperationFactory from '../services/OperationFactory';
 import HistoryService from '../services/History';
+import KeyboardService from '../services/Keyboard';
 
-const historyService = new HistoryService();
 const initialState = {
     displayValue: '0',
+    previewResult: '0',
     clearDisplay: false,
     operation: null,
     values: [0, 0],
@@ -22,16 +23,19 @@ export default class Calculator extends Component {
 
     state = { ...initialState };
 
-    componentDidMount() {
-        document.title = "Calculator";
-        this.refreshHistoryToState();
-    }
-
     constructor(props) {
         super(props);
         this.clearMemory = this.clearMemory.bind(this);
         this.setOperation = this.setOperation.bind(this);
         this.addDigit = this.addDigit.bind(this);
+        this.historyService = new HistoryService();
+        this.keyboardService = new KeyboardService();
+    }
+
+    componentDidMount() {
+        document.title = "Calculator";
+        document.addEventListener("keydown", (e) => this.keyboardService._handleKeyDown(e));
+        this.refreshHistoryToState();
     }
 
     clearMemory() {
@@ -39,7 +43,7 @@ export default class Calculator extends Component {
     }
 
     async clearHistory() {
-        await historyService.clearHistoryStorage();
+        await this.historyService.clearHistoryStorage();
         this.refreshHistoryToState();
     }
 
@@ -48,15 +52,15 @@ export default class Calculator extends Component {
         const symbolArray = operation.split(/\d+/).filter(Boolean);
         operation = symbolArray[0] ?? null;
         const values = valuesArray.map(Number);
-        const displayValue = null;
-        this.setState({ displayValue, operation, values });
+        const previewResult = (new OperationFactory()).executeOperation(values[0], values[1], operation);
+        this.setState({ previewResult, operation, values });
         this.setOperation(operation);
     }
 
     refreshHistoryToState() {
         this.setState({
-            operationsHistory: historyService.getOperationsHistory(),
-            resultsHistory: historyService.getResultsHistory()
+            operationsHistory: this.historyService.getOperationsHistory(),
+            resultsHistory: this.historyService.getResultsHistory()
         });
     }
 
@@ -74,7 +78,7 @@ export default class Calculator extends Component {
             values[0] = (new OperationFactory()).executeOperation(values[0], values[1], currentOperation);
             const result = values[0];
             values[1] = 0;
-            await historyService.storeOperationInLocalStorage(firstValue, currentOperation, secondValue, result);
+            await this.historyService.storeOperationInLocalStorage(firstValue, currentOperation, secondValue, result);
             this.setState({
                 displayValue: values[0],
                 operation: finish ? null : operation,
@@ -88,6 +92,12 @@ export default class Calculator extends Component {
         }
     }
 
+    previewResult() {
+        const values = [...this.state.values];
+        const currentOperation = this.state.operation;
+        return (new OperationFactory()).executeOperation(values[0], values[1], currentOperation);
+    }
+
     addDigit(n) {
         if (n === '.' && this.state.displayValue.includes('.')) return;
         const clearDisplay = this.state.displayValue === '0' || this.state.clearDisplay;
@@ -99,7 +109,10 @@ export default class Calculator extends Component {
             const newValue = parseFloat(displayValue);
             const values = [...this.state.values];
             values[i] = newValue;
-            this.setState({ values });
+            this.setState({ values }, () => {
+                const previewResult = this.previewResult();
+                this.setState({ previewResult });
+            });
         }
     }
 
@@ -119,7 +132,7 @@ export default class Calculator extends Component {
             <main id="main">
                 <div className="calculator">
                     <DisplayMode />
-                    <Display firstValue={this.state.values[0]} secondValue={this.state.values[1]} value={this.state.displayValue} currentOperation={this.state.operation} />
+                    <Display firstValue={this.state.values[0]} secondValue={this.state.values[1]} value={this.state.previewResult} currentOperation={this.state.operation} />
                     <div className="calculator-buttons">
                         <Button label="AC" click={this.clearMemory} triple />
                         <Button label="/" click={this.setOperation} operation />

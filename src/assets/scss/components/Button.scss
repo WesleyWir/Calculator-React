@@ -1,6 +1,9 @@
 @import "./../variables"; // Import @variables
 
 .button {
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
     font-size: 1.4em;
     border: none;
     outline: none;

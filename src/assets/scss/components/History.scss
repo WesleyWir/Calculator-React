@@ -1,0 +1,63 @@
+@import "./../variables"; // Import @variables
+
+#history {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 5px;
+    .history-values {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        justify-items: center;
+        gap: 10px;
+        .item {
+            position: relative;
+            border-radius: 10px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: none;
+            background: none;
+            font-size: medium;
+            padding: 10px;
+        }
+    }
+    .clear-history {
+        margin-top: 10px;
+        .clear-history-button {
+            color: rgb(192, 51, 51);
+            font-size: medium;
+            height: 50px;
+        }
+    }
+}
+
+.light {
+    #history {
+        .history-values {
+            .item {
+                background-color: $light-darker;
+                color: $light-font-color;
+
+                &:hover {
+                    background-color: darken($light-darker, 10);
+                }
+            }
+        }
+    }
+}
+
+.dark {
+    #history {
+        .history-values {
+            .item {
+                background-color: $dark-light;
+                color: $dark-font-color;
+                &:hover {
+                    background-color: lighten($dark-light, 10);
+                }
+            }
+        }
+    }
+}
