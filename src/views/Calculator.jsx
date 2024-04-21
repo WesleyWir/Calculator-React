@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useEffect } from 'react';
 import './../assets/scss/views/Calculator.scss';
 
 
@@ -34,8 +34,10 @@ export default class Calculator extends Component {
 
     componentDidMount() {
         document.title = "Calculator";
-        document.addEventListener("keydown", (e) => this.keyboardService._handleKeyDown(e));
         this.refreshHistoryToState();
+        if(this.keyboardEvent) return;
+        document.addEventListener('keydown', (event) => this.keyboardService._handleKeyDown(event, this));
+        this.keyboardEvent = true;
     }
 
     clearMemory() {

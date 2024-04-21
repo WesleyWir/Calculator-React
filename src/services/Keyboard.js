@@ -1,11 +1,24 @@
 
 export default class KeyboardService {
-    _handleKeyDown = (event) => {
+    _handleKeyDown = (event, calculatorComponent) => {
+        console.log(event)
         const value = event.key;
-        const isValid = ((this.isNumeric(value)) || (this.hasMathSymbols(value)))
-        if(isValid) {
-            console.log(value);
-        }       
+        const isEnter = (this.isEnterKey(value));
+        const isNumeric = (this.isNumeric(value));
+        const isMathSymbols = (this.isMathSymbols(value));
+        const isValid = (isNumeric || isMathSymbols || isEnter)
+        if (!isValid) {
+            return;
+        }
+        if (isEnter) {
+            return calculatorComponent.setOperation('=');
+        }
+        if (isNumeric) {
+            return calculatorComponent.addDigit(value);
+        }
+        if (isMathSymbols) {
+            return calculatorComponent.setOperation(value);
+        }
     }
 
 
@@ -14,12 +27,17 @@ export default class KeyboardService {
         return /^-?\d+$/.test(value);
     }
 
-    hasMathSymbols(value) {
-        const mathSymbolsRegex = /[+\-.*\/^()]/;        
+    isMathSymbols(value) {
+        const mathSymbolsRegex = /[+\-.*\/^()]/;
         return mathSymbolsRegex.test(value);
     }
 
-    isEnterOrDeleteKey(value) {
-        return value === 'Enter' || value === 'Delete';
+    isEnterKey(value) {
+        return value === "Enter";
     }
+
+    isDeleteKey(value) {
+        return value === "Delete";
+    }
+
 }
